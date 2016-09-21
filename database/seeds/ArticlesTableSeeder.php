@@ -1,0 +1,21 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class ArticlesTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+          DB::table('articles')->insert([
+            'name' => str_random(10),
+            'title' => str_random(10),
+            'author' => str_random(10),
+            'body' => str_random(10)
+        ]);
+    }
+}
