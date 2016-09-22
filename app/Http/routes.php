@@ -16,8 +16,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/qa', function () {
+Route::get('/articles', function () {
   	$articles = Article::all();
   	return view('articles', ['articles' => $articles]);
+});
+
+Route::get('article/{article}', function (Article $article) {
+	//$article = Article::find($id);
+	return view('article', ['article' => $article]);
 });
 

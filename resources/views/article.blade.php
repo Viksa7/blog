@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Laravel</title>
-         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
          <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -40,23 +40,25 @@
         </style>
     </head>
     <body>
-        <div class="container">
+    <div class="container">
+        <div class="page-header">
+            <h1>{{ $article->title }}</h1>
+        </div>
+        <div class="row">
             <div class="col-sm-12">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Articles</h3>
-                </div>
-                <div class="panel-body">
-                  @foreach ($articles as $article)
-                <div>
-                    <a href="{{ url('/article/'.$article->id) }}">{{ $article->title }}</a>
-                </div>
-                @endforeach
+                <ul class="list-group">
+                    <li class="list-group-item">{{ $article->name }}</li>
+                    <li class="list-group-item">{{ $article->body }}</li>
+                    <li class="list-group-item">{{ $article->author }}</li>
+                    <li class="list-group-item">1 -  {{ $article->created_at }}</li>
+                    <li class="list-group-item">2 -  {{ $article->updated_at }}</li>
+                </ul>
             </div>
         </div>
-</body>
+    </div>
+    
+    </body>
 </html>
-
 
 
 

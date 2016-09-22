@@ -6,16 +6,22 @@ class ArticlesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
+     * 
      * @return void
      */
     public function run()
-    {
-          DB::table('articles')->insert([
-            'name' => str_random(10),
-            'title' => str_random(10),
-            'author' => str_random(10),
-            'body' => str_random(10)
-        ]);
-    }
+	{
+	    $a = [];
+	    for ($i = 1; $i <= 5; $i++) {
+	        $a[] = [
+	            'name' => 'Best Article ' . $i,
+	            'title' => 'Article ' . $i,
+	            'author' => 'Author ' . $i,
+	            'body' => 'Article Body ' . $i,
+	        ];
+	    }
+	    DB::table('articles')->insert($a);
+	}
+
+	
 }
