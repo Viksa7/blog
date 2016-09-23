@@ -26,3 +26,6 @@ Route::get('article/{article}', function (Article $article) {
 	return view('article', ['article' => $article]);
 });
 
+Route::get('/add', function () {
+	return view('add');
+});
