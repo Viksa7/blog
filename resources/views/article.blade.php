@@ -9,6 +9,7 @@
 <p>1 -  {{ $article->created_at }}</p>
 <p>2 -  {{ $article->updated_at }}</p> 
 
+<a href='/articles'>Go to Articles list</a>
 @endsection
 
 

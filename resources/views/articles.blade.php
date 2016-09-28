@@ -8,7 +8,7 @@
   <div class="panel-body">
       @foreach ($articles as $article)
       <div>
-        <a href="{{ url('/article/'.$article->id) }}">{{ $article->title }}</a>
+        <a href="{{ url('/article/'.$article->id) }}">{{ $article->title }}</a> <a href="{{ url('/edit/'.$article->id) }}">Edit</a>
     </div>
     @endforeach
 </div>
