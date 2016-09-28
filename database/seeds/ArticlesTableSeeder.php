@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class ArticlesTableSeeder extends Seeder
 {
@@ -18,6 +19,8 @@ class ArticlesTableSeeder extends Seeder
 	            'title' => 'Article ' . $i,
 	            'author' => 'Author ' . $i,
 	            'body' => 'Article Body ' . $i,
+	           	'created_at' => Carbon::now(),
+	           	'updated_at' => Carbon::now(),
 	        ];
 	    }
 	    DB::table('articles')->insert($a);
