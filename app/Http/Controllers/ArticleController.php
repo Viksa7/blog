@@ -8,8 +8,14 @@ use App\Article;
 
 class ArticleController extends Controller
 {
+    public $arr = [
+        'title' => 'required|unique:articles|max:255',
+        'body' => 'required|max:255',
+        'name' => 'required',
+    ];
+
     public function all() {
-    	$articles = Article::all();
+        $articles = Article::paginate(5);
   	    return view('articles', ['articles' => $articles]);
     }
 
@@ -18,6 +24,8 @@ class ArticleController extends Controller
     }
 
     public function addArticle(Request $request) {
+        $this->validate($request, $this->arr);
+
         $article = new Article;
 
         $article->name = $request->input('name');
@@ -36,6 +44,7 @@ class ArticleController extends Controller
         //dd($article->name);
         //dd($request->all());
         //$article = Article::find($id);
+        $this->validate($request, $this->arr);
 
         $article->name = $request->input('name');
         $article->title = $request->input('title');
@@ -46,5 +55,4 @@ class ArticleController extends Controller
 
         return redirect('/article/' . $article->id);
     }
-
 }

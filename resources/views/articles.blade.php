@@ -3,7 +3,7 @@
 <div class="col-sm-12">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Articles</h3>
+      <h3 class="panel-title">Articles</h3> <a href="/add">Add new article</a>
   </div>
   <div class="panel-body">
       @foreach ($articles as $article)
@@ -12,9 +12,7 @@
     </div>
     @endforeach
 </div>
+{{ $articles->links() }}
+
 @endsection
-
-
-
-
 

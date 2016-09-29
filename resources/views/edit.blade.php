@@ -16,6 +16,16 @@
  	<input type="text" class="form-control" name ="created_at" aria-label="created_at" value="{{ $article->created_at }}">
  	<button type="submit" class="btn btn-success" style="margin-top:20px;">Save</button>	
 {!! Form::close() !!}
+
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 </div>
  
 

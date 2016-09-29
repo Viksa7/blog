@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class Article extends Model
 {
-   
+    
 }
 
 
