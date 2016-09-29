@@ -1,3 +1,4 @@
+@extends('layouts.app')
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +12,22 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>    </head>
     <body>
         <div class="container">
-           @yield('content')
-        </div>
+            @section('content')
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Welcome</div>
+                            <div class="panel-body">
+                                Your Application's Landing Page.
+                            </div>
+                        </div>
+                     </div>
+                </body>
+            </html>
+                </div>
+            </div>
+            @endsection
+          </div>
     </body>
 </html>

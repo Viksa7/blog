@@ -28,3 +28,7 @@ Route::get('edit/{article}', function (Article $article) {
 	return view('edit', ['article' => $article]);
 });
 Route::post('/editArticle/{article}', 'ArticleController@editArticle');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

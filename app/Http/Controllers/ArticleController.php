@@ -14,9 +14,10 @@ class ArticleController extends Controller
         'name' => 'required',
     ];
 
-    public function all() {
-        $articles = Article::paginate(5);
-  	    return view('articles', ['articles' => $articles]);
+    public function all(Request $request) {
+        $search = $request->input('search');
+        $articles = Article::where('title', 'LIKE', '%' . $search . '%')->orderBy('id')->paginate(5); 
+  	    return view('articles', ['articles' => $articles, 'search' => $search]);
     }
 
     public function add() {
