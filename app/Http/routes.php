@@ -15,20 +15,18 @@ use App\Article;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('article/{article}', function (Article $article) {
-	//$article = Article::find($id);
-	return view('article', ['article' => $article]);
+Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/articles', 'ArticleController@all');
+	Route::get('article/{article}', function (Article $article) {
+		return view('article', ['article' => $article]);
+	});
+	Route::post('/editArticle/{article}', 'ArticleController@editArticle');
+	Route::get('/add', 'ArticleController@add');
+	Route::post('/addArticle', 'ArticleController@addArticle');
+	Route::get('edit/{article}', function (Article $article) {
+		return view('edit', ['article' => $article]);
+	});
 });
-
-Route::get('/articles', 'ArticleController@all');
-Route::get('/add', 'ArticleController@add');
-Route::post('/addArticle', 'ArticleController@addArticle');
-Route::get('edit/{article}', function (Article $article) {
-	return view('edit', ['article' => $article]);
-});
-Route::post('/editArticle/{article}', 'ArticleController@editArticle');
 
 Route::auth();
-
-Route::get('/home', 'HomeController@index');

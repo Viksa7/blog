@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->text('body')->nullable();
             $table->string('author')->nullable();
             $table->timestamps();
+            $table->integer('user_id')->unsigned();
         });
     }
 

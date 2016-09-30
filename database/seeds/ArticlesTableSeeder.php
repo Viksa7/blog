@@ -11,20 +11,20 @@ class ArticlesTableSeeder extends Seeder
      * @return void
      */
     public function run()
-	{
-	    $a = [];
-	    for ($i = 1; $i <= 5; $i++) {
-	        $a[] = [
-	            'name' => 'Best Article ' . $i,
-	            'title' => 'Article ' . $i,
-	            'author' => 'Author ' . $i,
-	            'body' => 'Article Body ' . $i,
-	           	'created_at' => Carbon::now(),
-	           	'updated_at' => Carbon::now(),
-	        ];
-	    }
-	    DB::table('articles')->insert($a);
-	}
-
-	
+    {
+    	$a = [];
+    	for ($i = 1; $i <= 5; $i++) {
+    		$a[] = [
+    		'name' => 'Best Article ' . $i,
+    		'title' => 'Article ' . $i,
+    		'author' => 'Author ' . $i,
+    		'body' => 'Article Body ' . $i,
+    		'created_at' => Carbon::now(),
+    		'updated_at' => Carbon::now(),
+    		'user_id' => 1,
+    		];
+    	}
+    	DB::table('articles')->insert($a);
+    }
+    
 }
