@@ -5,11 +5,12 @@
     <div class="panel-heading">
       <h3 class="panel-title">Articles</h3> <a href="/add">Add new article</a>
       {!! Form::open(['url' => '/articles', 'method' => 'get']) !!}
-        <input type="text" class="form-control" name="search" value="{{ $search }}">
-        <button type="submit" class="btn btn-success" style="margin-top:20px;">Search</button> 
+        <input type="text" class="form-control" id="search" name="search" value="{{ $search }}">
+        <button type="submit" class="btn btn-success" style="margin-top:20px;" onClick="getMessage(); return false;">Search</button> 
       {!! Form::close() !!}  
   </div>
-  <div class="panel-body">
+  <div id="ajax">
+    <div class="panel-body">
       @if (count($articles)>0)
         @foreach ($articles as $article)
           <div>
@@ -20,6 +21,8 @@
             <p>No results were found</p>   
       @endif
   </div>
-{{ $articles->links() }}
+  {{ $articles->links() }}
+  </div>
+  
 @endsection
 

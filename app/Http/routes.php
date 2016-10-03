@@ -1,5 +1,6 @@
 <?php
 use App\Article;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,15 @@ Route::group(['middleware' => 'auth'], function () {
 	});
 });
 
+Route::get('/test', function () {
+	$article = Article::find(1);
+    return $article->user;
+
+    $user = User::find(1);
+    return $user->articles;
+});
 Route::auth();
+
+////////////////////////////
+Route::resource('tests', 'TestController');
+Route::get('/ajax','AjaxController@index');

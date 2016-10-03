@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Article;
+use Auth;
 
 class ArticleController extends Controller
 {
@@ -34,8 +35,11 @@ class ArticleController extends Controller
 		$article->body = $request->input('body');
 		$article->author = $request->input('author');
 
-        $article->save();
+        //$user = Auth::user();
+        //$user->articles()->save($article);
 
+        $article->save();
+        
         //dd($request->input('name1', 'default'));
     	//dd($request->all());
     	return redirect('/article/' . $article->id);
@@ -52,7 +56,9 @@ class ArticleController extends Controller
         $article->body = $request->input('body');
         $article->author = $request->input('author');
         
-        $article->save();
+        // $article->save();
+        $user = Auth::user();
+        $user->articles()->save($article);
 
         return redirect('/article/' . $article->id);
     }
