@@ -8,6 +8,7 @@
         @foreach ($articles as $article)
           <div>
             <a href="{{ url('/article/'.$article->id) }}">{{ $article->title }}</a> <a href="{{ url('/edit/'.$article->id) }}">Edit</a>
+            <p>{{ $article->comments()->count() }} <span>comments</span> </p>
           </div>
         @endforeach
           @else
