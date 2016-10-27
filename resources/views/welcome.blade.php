@@ -14,19 +14,18 @@
     </script>
 
     <script>
-       function getMessage(){
+        function getMessage(){
         var search = $('#search').val();
-
-        $.ajax({
-         type:'GET',
-         url:'/ajax',
-         data:'search=' + search,
-         success:function(data){
-          $("#ajax").html(data);
-      }
-  });
-    }
-</script>
+            $.ajax({
+             type:'GET',
+             url:'/ajax',
+             data:'search=' + search,
+             success:function(data){
+              $("#ajax").html(data);
+             }
+            });
+        }
+    </script>
 </head>
 
 <body>

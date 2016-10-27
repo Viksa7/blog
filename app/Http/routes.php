@@ -28,8 +28,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('edit/{article}', function (Article $article) {
 		return view('edit', ['article' => $article]);
 	});
+	Route::get('/search', 'ArticleController@search');
+	//Route::post('article/{article}', 'CommentController@addComment');
 });
-
+Route::post('addComment/{article}', 'CommentController@addComment');
 Route::get('/test', function () {
 	$article = Article::find(1);
     return $article->user;

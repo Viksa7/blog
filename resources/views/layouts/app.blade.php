@@ -49,6 +49,14 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     <li><a href="{{ url('/articles') }}">Articles</a></li>
+                    <li>
+                    
+                        {!! Form::open(['url' => '/search', 'method' => 'get']) !!}
+                            <input type="text" id="search" name="search" style="margin-top: 10px;" value="{{ $search or '' }}">
+                            <button type="submit">Search</button> 
+                        {!! Form::close() !!}
+                    
+                    </li>
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">

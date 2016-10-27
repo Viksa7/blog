@@ -10,7 +10,33 @@
 <p>2 -  {{ $article->updated_at }}</p> 
 
 <a href='/articles'>Go to Articles list</a>
+
+<div class="container">
+
+    <script>
+      function check(){
+        if (!$('#comment').val()) {
+        	alert('Not good, try again');
+        	return false;
+        }
+        return true;
+      }
+    </script>
+  
+{!! Form::open(['url' => ['addComment', $article->id]]) !!} 
+{{ csrf_field() }}
+ 	<label for="name">Your comment</label>
+ 	<input type="text" class="form-control" name ="body" aria-label="name" id="comment">
+ 	<button type="submit" class="btn btn-success" style="margin-top:20px;" onclick="return check();">Send</button>	
+{!! Form::close() !!}
+
+</div>
+
 @endsection
+
+
+
+
 
 
 

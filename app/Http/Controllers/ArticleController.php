@@ -21,6 +21,12 @@ class ArticleController extends Controller
   	    return view('articles', ['articles' => $articles, 'search' => $search]);
     }
 
+    public function search(Request $request) {
+        $search = $request->input('search');
+        $articles = Article::where('title', 'LIKE', '%' . $search . '%')->orderBy('id')->paginate(5); 
+        return view('search', ['articles' => $articles, 'search' => $search]);
+    }
+
     public function add() {
     	return view('add');
     }
@@ -56,7 +62,6 @@ class ArticleController extends Controller
         $article->body = $request->input('body');
         $article->author = $request->input('author');
         
-        // $article->save();
         $user = Auth::user();
         $user->articles()->save($article);
 
