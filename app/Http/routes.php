@@ -19,9 +19,7 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index');
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/articles', 'ArticleController@all');
-	Route::get('article/{article}', function (Article $article) {
-		return view('article', ['article' => $article]);
-	});
+	Route::get('article/{article}', 'ArticleController@article');
 	Route::post('/editArticle/{article}', 'ArticleController@editArticle');
 	Route::get('/add', 'ArticleController@add');
 	Route::post('/addArticle', 'ArticleController@addArticle');
@@ -29,7 +27,6 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('edit', ['article' => $article]);
 	});
 	Route::get('/search', 'ArticleController@search');
-	//Route::post('article/{article}', 'CommentController@addComment');
 });
 Route::post('addComment/{article}', 'CommentController@addComment');
 Route::get('/test', function () {

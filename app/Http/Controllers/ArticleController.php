@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Article;
+use App\Comment;
 use Auth;
 
 class ArticleController extends Controller
@@ -14,6 +15,10 @@ class ArticleController extends Controller
         'body' => 'required|max:255',
         'name' => 'required',
     ];
+
+    public function article(Article $article) {
+        return view('article', ['article' => $article, 'comments' => $article->comments]);
+    }
 
     public function all(Request $request) {
         $search = $request->input('search');
@@ -41,20 +46,12 @@ class ArticleController extends Controller
 		$article->body = $request->input('body');
 		$article->author = $request->input('author');
 
-        //$user = Auth::user();
-        //$user->articles()->save($article);
-
         $article->save();
         
-        //dd($request->input('name1', 'default'));
-    	//dd($request->all());
     	return redirect('/article/' . $article->id);
 	}
 
     public function editArticle(Article $article, Request $request) {
-        //dd($article->name);
-        //dd($request->all());
-        //$article = Article::find($id);
         $this->validate($request, $this->arr);
 
         $article->name = $request->input('name');

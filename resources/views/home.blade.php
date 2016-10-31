@@ -13,5 +13,19 @@
             </div>
         </div>
     </div>
+    
+    <div class="panel-body">
+    @foreach ($articles as $article)
+        <div>
+            <a href="{{ url('/article/'.$article->id) }}">{{ $article->title }}</a>
+        </div>
+    @endforeach
+</div>
+
 </div>
 @endsection
+
+
+
+
+

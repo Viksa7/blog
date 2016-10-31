@@ -22,7 +22,7 @@
         return true;
       }
     </script>
-  
+
 {!! Form::open(['url' => ['addComment', $article->id]]) !!} 
 {{ csrf_field() }}
  	<label for="name">Your comment</label>
@@ -31,6 +31,22 @@
 {!! Form::close() !!}
 
 </div>
+
+<div class="panel-body">
+    @foreach ($comments as $comment)
+        <div>
+            <p>{{ $comment->body }}</p>
+            <p>Author: {{ $comment->user->name}}</p>
+            <p>Created at {{ $comment->created_at }}</p>
+        </div>
+    @endforeach
+</div>
+
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
 
 @endsection
 

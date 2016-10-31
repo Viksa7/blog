@@ -11,28 +11,20 @@ use Auth;
 
 class CommentController extends Controller
 {
+    public $arr = [
+        'body' => 'required|max:255',
+    ];
+
     public function addComment($id, Request $request) {
         $comment = new Comment;
         $comment->body = $request->input('body');
 
-
         $comment->article_id = $id;
         $comment->user_id = Auth::user()->id;
         
-        //$user = Auth::user();
-        //$user->comments()->save($comment);
-        
-        //$article = Article::find($id);
-        //$article->comments()->save($comment);
-        
         $comment->save();
 
-        return redirect('/article/' . $id);
+        return redirect('/article/' . $id)->with('status', 'Comment added!');
     }
 
-    public function all(Request $request) {
-        $search = $request->input('search');
-        $articles = Article::where('title', 'LIKE', '%' . $search . '%')->orderBy('id')->paginate(5); 
-        return view('articles', ['articles' => $articles, 'search' => $search]);
-    }
 }
